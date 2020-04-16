@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js_frame/openseadragon.js"></script>
+    <script src="js_frame/preact.js"></script>
+    <script src="js_frame/new_annotations.js"></script>
+    <script src="js_frame/jquery-3.3.1.min.js"></script>
+    <style>
+        * {
+            -webkit-touch-callout:none;
+            -webkit-user-select:none;
+            -khtml-user-select:none;
+            -moz-user-select:none;
+            -ms-user-select:none;
+            user-select:none;
+        }
+        .rect,.draw,.lasso{
+            width:800px;
+            border-top:1px solid #ccc ;
+            border-left:1px solid #ccc ;
+            border-right:1px solid #ccc ;
+            display:none;
+        }
+        p{
+            /*width:1000px;*/
+            display: flex;
+            padding:5px;
+            margin:0;
+            width:790px;
+            border-bottom:1px solid #ccc;
+         }
+        p:hover{
+            background: #E1E4E8;
+            /*border-bottom:1px solid #ccc;*/
+        }
+        p input:nth-child(1){
+            width: 20px;
+            height: 20px;
+            align-items:center;
+            margin-right:30px;
+        }
+        p input:nth-child(2){
+            margin-right:30px;
+        }
+        p button{
+            padding:3px 10px;
+            background-color: #c9302c;
+            border-color: #d43f3a;
+            color:#fff;
+            border-radius:5px;
+            outline:none;
+        }
+    </style>
+</head>
+<body>
+<div id="openseadragon1" style="width: 800px; height: 600px;"></div>
+<div class="rect"></div>
+<div class="draw"></div>
+<div class="lasso"></div>
+</body>
+<script>
+
+    var tileSources1 = {
+        Image: {
+            xmlns: 'http://schemas.microsoft.com/deepzoom/2009',
+            Url: 'dzc_output_images/bingli2_files/',
+            Format: 'jpg',
+            Overlap: '1',
+            TileSize: '256',
+            NextItemId:"1",
+            ServerFormat: 'Default',
+            Size: {
+                Height: '1184',
+                Width: '4000'
+            }
+        }
+    };
+
+    var viewer = OpenSeadragon({
+        id: "openseadragon1",
+        prefixUrl: "images/",
+        showNavigator:true,
+        tileSources:tileSources1
+    });
+
+    // 调用绘制功能
+    viewer.initializeAnnotations();
+
+</script>
+</html>
